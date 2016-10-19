@@ -26,7 +26,7 @@ RUN GITHUB_REPO="https://github.com/mattn/goreman" \
 RUN echo "web: gosu dummy /bin/busybox httpd -f -p 8080 -h /webui-aria2\nbackend: gosu dummy /usr/bin/aria2c --enable-rpc --rpc-listen-all --dir=/data" > Procfile
 
 # config path
-RUN ln -s /config /home/dummy/.aria2
+RUN mkdir -p /home/dummy && ln -s /config /home/dummy/.aria2
 
 # aria2 settings directory
 VOLUME /config
